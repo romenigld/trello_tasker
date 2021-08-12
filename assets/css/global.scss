@@ -16,7 +16,7 @@ body, input, button{
 #root{
   max-width: 960px;
   margin: 0 auto;
-  padding: 40px 20;
+  padding: 40px 20px;
 
   &:before{
     content: '';
@@ -29,5 +29,31 @@ body, input, button{
     right: 48%;
     z-index: -1;
     transform: translateY(-50%);
+  }
+}
+
+header#main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  strong{
+    color: $detail-color-2;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $detail-color-2;
+    transition: color 0.4s;
+
+    &:hover {
+      color: darken($detail-color-2, 20);
+    }
+
+    i {
+      margin-right: 4px;
+    }
   }
 }
