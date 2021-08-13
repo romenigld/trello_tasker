@@ -1,20 +1,23 @@
 <section class="container">
   <h1>Monitore seus Cards do Trello</h1>
 
-  <form action="" id="create-card">
-    <input type="text" placeholder="Informe o numero do Card" class="error">
-    <button type="submit">Pesquisar</button>
+  <%= f = form_for @changeset, "#", id: "create-card", phx_submit: "create" %>
+    <%= text_input f, :path, placeholder: "Informe o numero do Card", class: f.errors && f.errors[:path] && "error" %>
+    <%= error_tag f, :path %>
+    <%= submit "Pesquisar" , phx_disable_with: "Pesquisando..." %>
   </form>
 
   <div class="cards">
-    <a href="">
-      <img src="https://www.muycomputer.com/wp-content/uploads/2017/09/Trello_para_escritorio.jpg" alt="Trello">
+  <%= for card <- @cards do %>
+    <%= live_redirect to: Routes.card_info_path(@socket, :index, card.card_id) do %>
+      <img src="<%= card.image %>" alt="">
 
       <div>
-        <strong>Terminar aula de Live View</strong>
-        <p>explicar conceitos e dar exemplos de como funciona o fluxo do LiveView</p>
+        <strong><%= card.name %></strong>
+        <p><%= card.description %></p>
       </div>
       <i class="fa fa-caret-right"></i>
-    </a>
+    <% end %>
+  <% end %>
   </div>
 </section>

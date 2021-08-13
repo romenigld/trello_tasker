@@ -1,45 +1,38 @@
 <section class="card-info">
   <header>
-    <img src="https://www.muycomputer.com/wp-content/uploads/2017/09/Trello_para_escritorio.jpg" alt="">
+    <img src="<%= @card.image %>" alt="<%= @card.name %>">
     <div>
-      <strong>Tarefa de Aprender LiveView</strong>
-      <p>Descrever a tarefa do Trello tal......</p>
+      <strong><%= @card.name %></strong>
+      <p><%= @card.description %></p>
     </div>
   </header>
 
   <ul>
     <li>
       <span>
-        <i class="fa fa-clock-o"></i>
-        25-12-2020
+        <i class="fa fa-clock-o <%= (Date.compare(Date.utc_today(), @card.deliver_date) && !@card.completed) && "is-late" || "" %>"></i>
+        <%= @card.deliver_date %>
       </span>
     </li>
     <li>
       <span>
         <i class="fa fa-check-circle-o"></i>
-        Done
+        <%= @card.completed && "Done" || "In Progress" %>
       </span>
     </li>
   </ul>
 </section>
 
 <div class="comments">
-  <a href="">
-    <img src=""">
+  <%= for comment <- @comments do %>
+    <a href="">
+      <img src=""">
 
-    <div>
-      <strong>Terminar aula de Live View</strong>
-      <p>explicar conceitos e dar exemplos de como funciona o fluxo do LiveView</p>
-    </div>
-    <i class="fa fa-caret-right"></i>
-  </a>
-  <a href="">
-    <img src=""">
-
-    <div>
-      <strong>Terminar aula de Live View</strong>
-      <p>explicar conceitos e dar exemplos de como funciona o fluxo do LiveView</p>
-    </div>
-    <i class="fa fa-caret-right"></i>
-  </a>
+      <div>
+        <strong><%= comment.user %></strong>
+        <p><%= comment.text %></p>
+      </div>
+      <i class="fa fa-caret-right"></i>
+    </a>
+  <% end %>
 </div>
