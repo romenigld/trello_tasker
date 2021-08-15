@@ -1,10 +1,16 @@
 @import "../node_modules/nprogress/nprogress.css";
 
 $bg-color: #fff;
-$detail-color: #ffe9ce;
-$detail-color-2: #4e51bf;
-$detail-color-3: #24252a;
-$detail-color-4: #ff92a4;
+// $detail-color: #ffe9ce;
+// $detail-color-2: #4e51bf;
+// $detail-color-3: #24252a;
+// $detail-color-4: #ff92a4;
+
+$detail-color: #feae47;
+$detail-color-2: #56bde6;
+$detail-color-3: #434852;
+$detail-color-4: #fff;
+
 $error-color: $detail-color-4;
 
 $gradient-detail: linear-gradient(-45deg, $detail-color, $bg-color);
